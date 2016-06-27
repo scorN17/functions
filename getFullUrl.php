@@ -2,6 +2,7 @@
 function get_full_url( $url, $webs, $page )
 {
 	$tmp= trim( $url );
+	$tmp= str_replace( "\\", '/', $tmp );
 	
 	$page= explode( "?", $page );
 	$page= $page[ 0 ];
