@@ -1,3 +1,4 @@
+<?php
 function curl_exec_followlocation(&$curl, &$uri)
 {
 	// v2.1
