@@ -1,14 +1,15 @@
-
 function curl_exec_followlocation(&$curl, &$uri)
 {
-	// v2.0
-	// Date 13.01.2017
+	// v2.1
+	// Date 16.02.2017
 	// -----------------------------------------
 	if(preg_match("/^(http(s){0,1}:\/\/[a-z0-9\.-]+)(.*)$/i", $uri, $matches)!==1) return;
 	$website= $matches[1];
 	do{
 		// if($referer) curl_setopt($curl, CURLOPT_REFERER, $referer);
 		curl_setopt($curl, CURLOPT_URL, $uri);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($curl, CURLOPT_HEADER, true);
 		$response= curl_exec($curl);
 		if(curl_errno($curl)) return false;
 		$headers= str_replace("\r",'',$response);
